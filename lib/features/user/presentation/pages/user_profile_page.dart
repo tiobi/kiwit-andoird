@@ -1,0 +1,16 @@
+import 'package:flutter/material.dart';
+
+class UserProfilePage extends StatelessWidget {
+  const UserProfilePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const SingleChildScrollView(
+      child: Column(
+        children: [
+          Center(child: Text('User Profile Page')),
+        ],
+      ),
+    );
+  }
+}

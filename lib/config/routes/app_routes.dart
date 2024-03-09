@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kiwit/features/auth/presentation/pages/log_in_page.dart';
+import 'package:kiwit/features/featured/presentation/pages/home_page.dart';
+import 'package:kiwit/features/gpt/presentation/pages/gpt_list_page.dart';
+import 'package:kiwit/features/lecture/presentation/pages/lecture_list_page.dart';
+import 'package:kiwit/features/quiz/presentation/pages/quiz_list_page.dart';
+import 'package:kiwit/features/user/presentation/pages/user_profile_page.dart';
 
 class AppRoutes {
   /// Auth
@@ -39,7 +45,7 @@ class AppRouteManager {
     switch (settings.name) {
       case AppRoutes.logIn:
         return MaterialPageRoute(
-          builder: (context) => const ErrorPage(),
+          builder: (context) => const LogInPage(),
         );
 
       case AppRoutes.signUp:
@@ -49,12 +55,12 @@ class AppRouteManager {
 
       case AppRoutes.home:
         return MaterialPageRoute(
-          builder: (context) => const ErrorPage(),
+          builder: (context) => const HomePage(),
         );
 
       case AppRoutes.userProfile:
         return MaterialPageRoute(
-          builder: (context) => const ErrorPage(),
+          builder: (context) => const UserProfilePage(),
         );
 
       case AppRoutes.userHistory:
@@ -69,7 +75,7 @@ class AppRouteManager {
 
       case AppRoutes.lectureList:
         return MaterialPageRoute(
-          builder: (context) => const ErrorPage(),
+          builder: (context) => const LectureListPage(),
         );
 
       case AppRoutes.lectureContent:
@@ -79,7 +85,7 @@ class AppRouteManager {
 
       case AppRoutes.quizList:
         return MaterialPageRoute(
-          builder: (context) => const ErrorPage(),
+          builder: (context) => const QuizListPage(),
         );
 
       case AppRoutes.quizContent:
@@ -94,7 +100,7 @@ class AppRouteManager {
 
       case AppRoutes.gptList:
         return MaterialPageRoute(
-          builder: (context) => const ErrorPage(),
+          builder: (context) => const GptListPage(),
         );
 
       case AppRoutes.gptContent:

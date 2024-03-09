@@ -2,8 +2,10 @@
 ///
 import 'package:flutter/material.dart';
 import 'package:kiwit/core/providers/app_size_provider.dart';
+import 'package:kiwit/core/responsive/providers/layout_provider.dart';
 import 'package:provider/provider.dart';
 
+import '../core/responsive/layouts/responsive_layout.dart';
 import '../injection_container.dart';
 
 /// Project packages
@@ -11,10 +13,6 @@ import '../injection_container.dart';
 import './constants/app_string.dart';
 import '../config/theme/app_theme.dart';
 import '../config/routes/app_routes.dart';
-
-/// Pages
-///
-import '../features/auth/presentation/pages/log_in_page.dart';
 
 class KiwitApp extends StatelessWidget {
   const KiwitApp({Key? key}) : super(key: key);
@@ -30,6 +28,9 @@ class KiwitApp extends StatelessWidget {
         ChangeNotifierProvider<AppSizeProvider>(
           create: (_) => getIt<AppSizeProvider>(),
         ),
+        ChangeNotifierProvider<PageControllerProvider>(
+          create: (_) => getIt<PageControllerProvider>(),
+        )
       ],
 
       child: MaterialApp(
@@ -50,7 +51,7 @@ class KiwitApp extends StatelessWidget {
                 appSizeProvider.setUpAppSize(context: context);
               }
 
-              return const LogInPage();
+              return getIt<ResponsiveLayout>();
             }),
       ),
     );

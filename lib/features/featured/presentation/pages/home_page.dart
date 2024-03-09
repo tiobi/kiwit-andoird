@@ -7,7 +7,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SingleChildScrollView(
       child: Column(
-        children: [],
+        children: [
+          Center(child: Text('Home Page')),
+        ],
       ),
     );
   }
