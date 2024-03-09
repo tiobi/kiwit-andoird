@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kiwit/core/responsive/providers/layout_provider.dart';
 import 'package:kiwit/features/featured/presentation/pages/home_page.dart';
+import 'package:kiwit/injection_container.dart';
 import 'package:provider/provider.dart';
 
 import '../../../features/gpt/presentation/pages/gpt_list_page.dart';
@@ -40,14 +41,25 @@ const bottomNavigationBarItems = [
 ];
 
 class MobileLayout extends StatelessWidget {
-  const MobileLayout({Key? key}) : super(key: key);
+  MobileLayout({Key? key}) : super(key: key);
+
+  PageControllerProvider pageControllerProvider =
+      getIt<PageControllerProvider>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      body: PageView(
-        children: pageViewItems,
+      body: Consumer<PageControllerProvider>(
+        builder: (context, pageControllerProvider, _) => PageView(
+          controller: PageController(
+            initialPage: pageControllerProvider.index,
+          ),
+          onPageChanged: (index) {
+            pageControllerProvider.setIndex(index: index);
+          },
+          children: pageViewItems,
+        ),
       ),
       bottomNavigationBar: Consumer<PageControllerProvider>(
         builder: (context, pageControllerProvider, _) {

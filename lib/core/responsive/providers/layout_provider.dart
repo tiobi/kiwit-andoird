@@ -9,6 +9,7 @@ class PageControllerProvider extends ChangeNotifier {
     required int index,
   }) {
     _selectedIndex = index;
+    print('Index: $_selectedIndex');
     notifyListeners();
   }
 }

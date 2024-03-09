@@ -22,7 +22,7 @@ Future<void> initializeDependencies() async {
   /// Layout
   ///
   getIt.registerLazySingleton<MobileLayout>(
-    () => const MobileLayout(),
+    () => MobileLayout(),
   );
   getIt.registerLazySingleton<TabletLayout>(
     () => const TabletLayout(),
