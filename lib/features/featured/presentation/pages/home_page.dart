@@ -40,11 +40,14 @@ class HomePage extends StatelessWidget {
   }
 }
 
-Widget TempButton({String? text, Function()? onPressed}) {
+Widget TempButton({
+  String? text,
+  Function()? onPressed,
+}) {
   AppSizeProvider appSizeProvider = getIt<AppSizeProvider>();
   return Container(
-    margin: const EdgeInsets.all(25),
-    height: appSizeProvider.size!.height * 0.15,
+    margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 25),
+    height: appSizeProvider.size!.height * 0.1,
     width: appSizeProvider.size!.width - 50,
     color: Colors.grey,
     child: InkWell(
