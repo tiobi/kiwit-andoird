@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:kiwit/config/routes/app_routes.dart';
+
+enum AuthStateEnum { authenticated, unauthenticated }
 
 class AuthProvider extends ChangeNotifier {
-  void navigateToHome({
-    required BuildContext context,
-  }) {
-    Navigator.pushReplacementNamed(context, AppRoutes.home);
+  AuthStateEnum _authState = AuthStateEnum.unauthenticated;
+
+  AuthStateEnum get authState => _authState;
+
+  void authStateChanges() {}
+
+  void signInWithSocial() async {
+    // Todo: Implement the social sign in
+    _authState = AuthStateEnum.authenticated;
+    notifyListeners();
   }
 
-  void signInWithSocial({required BuildContext context}) async {
-    navigateToHome(context: context);
+  void signOut() {
+    _authState = AuthStateEnum.unauthenticated;
+    notifyListeners();
   }
 }

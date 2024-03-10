@@ -3,9 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:kiwit/core/providers/app_size_provider.dart';
 import 'package:kiwit/core/responsive/providers/page_controller_provider.dart';
+import 'package:kiwit/features/auth/presentation/pages/log_in_page.dart';
 import 'package:provider/provider.dart';
 
 import '../core/responsive/layouts/responsive_layout.dart';
+import '../features/auth/presentation/providers/auth_provider.dart';
 import '../injection_container.dart';
 
 /// Project packages
@@ -30,7 +32,10 @@ class KiwitApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<PageControllerProvider>(
           create: (_) => getIt<PageControllerProvider>(),
-        )
+        ),
+        ChangeNotifierProvider<AuthProvider>(
+          create: (_) => getIt<AuthProvider>(),
+        ),
       ],
 
       child: MaterialApp(
@@ -42,17 +47,19 @@ class KiwitApp extends StatelessWidget {
 
         // Todo: Setup the StreamBuilder
         ///
-        home: StreamBuilder(
-            stream: null,
-            builder: (context, _) {
-              AppSizeProvider appSizeProvider = getIt<AppSizeProvider>();
+        home: Consumer<AuthProvider>(builder: (context, authState, _) {
+          AppSizeProvider appSizeProvider = getIt<AppSizeProvider>();
 
-              if (appSizeProvider.size == null) {
-                appSizeProvider.setUpAppSize(context: context);
-              }
+          if (appSizeProvider.size == null) {
+            appSizeProvider.setUpAppSize(context: context);
+          }
 
-              return getIt<ResponsiveLayout>();
-            }),
+          if (authState.authState == AuthStateEnum.unauthenticated) {
+            return const LogInPage();
+          }
+
+          return getIt<ResponsiveLayout>();
+        }),
       ),
     );
   }

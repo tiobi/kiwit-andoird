@@ -19,15 +19,15 @@ class SocialSignInButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (type) {
       case SocialSignInButtonType.google:
-        return _GoogleSignInButton(context);
+        return _GoogleSignInButton();
       case SocialSignInButtonType.apple:
-        return _AppleSignInButton(context);
+        return _AppleSignInButton();
       case SocialSignInButtonType.kakao:
-        return _KakaoSignInButton(context);
+        return _KakaoSignInButton();
     }
   }
 
-  Widget _GoogleSignInButton(BuildContext context) {
+  Widget _GoogleSignInButton() {
     return Container(
       margin: const EdgeInsets.all(10),
       height: 50,
@@ -37,7 +37,7 @@ class SocialSignInButtonWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: InkWell(
-        onTap: () => authProvider.signInWithSocial(context: context),
+        onTap: () => authProvider.signInWithSocial(),
         child: const Center(
           child: Text("구글로 시작하기"),
         ),
@@ -45,7 +45,7 @@ class SocialSignInButtonWidget extends StatelessWidget {
     );
   }
 
-  Widget _AppleSignInButton(BuildContext context) {
+  Widget _AppleSignInButton() {
     return Container(
       margin: const EdgeInsets.all(10),
       height: 50,
@@ -55,7 +55,7 @@ class SocialSignInButtonWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: InkWell(
-        onTap: () => authProvider.signInWithSocial(context: context),
+        onTap: () => authProvider.signInWithSocial(),
         child: const Center(
           child: Text("애플로 시작하기"),
         ),
@@ -63,7 +63,7 @@ class SocialSignInButtonWidget extends StatelessWidget {
     );
   }
 
-  Widget _KakaoSignInButton(BuildContext context) {
+  Widget _KakaoSignInButton() {
     return Container(
       margin: const EdgeInsets.all(10),
       height: 50,
@@ -73,7 +73,7 @@ class SocialSignInButtonWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: InkWell(
-        onTap: () => authProvider.signInWithSocial(context: context),
+        onTap: () => authProvider.signInWithSocial(),
         child: const Center(
           child: Text("카카오로 시작하기"),
         ),
