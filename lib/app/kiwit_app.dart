@@ -22,12 +22,16 @@ class KiwitApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// Checks if SharedPreferences is properly initialized.
+    /// Then the SharedPreference instance is loaded from the GetIt instance.
+    ///
     return FutureBuilder<SharedPreferences>(
         future: SharedPreferences.getInstance(),
         builder: (context, shapshot) {
           if (!shapshot.hasData) {
             return const CircularProgressIndicator();
           }
+
           return MultiProvider(
             // Todo: Setup Providers
             /// Providers that are used across the app is added here.
@@ -54,19 +58,31 @@ class KiwitApp extends StatelessWidget {
                   AppRouteManager.generateRoute(settings),
 
               // Todo: Setup the StreamBuilder
-              ///
-              home: Consumer<AuthProvider>(builder: (context, authState, _) {
+              home: Consumer<AuthProvider>(builder: (context, authProvider, _) {
                 AppSizeProvider appSizeProvider = getIt<AppSizeProvider>();
 
                 if (appSizeProvider.size == null) {
                   appSizeProvider.setUpAppSize(context: context);
                 }
 
-                if (authState.authState == AuthStateEnum.unauthenticated) {
-                  return const LogInPage();
-                }
+                return FutureBuilder<AuthStateEnum>(
+                  future: authProvider.getAuthState(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Scaffold();
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    }
 
-                return getIt<ResponsiveLayout>();
+                    final AuthStateEnum authState = snapshot.data!;
+
+                    if (authState == AuthStateEnum.unauthenticated) {
+                      return const LogInPage();
+                    }
+
+                    return getIt<ResponsiveLayout>();
+                  },
+                );
               }),
             ),
           );
