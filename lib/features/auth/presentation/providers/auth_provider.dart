@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 enum AuthStateEnum { authenticated, unauthenticated }
 
@@ -7,7 +8,9 @@ class AuthProvider extends ChangeNotifier {
 
   AuthStateEnum get authState => _authState;
 
-  void authStateChanges() {}
+  final SharedPreferences sharedPreferences;
+
+  AuthProvider({required this.sharedPreferences});
 
   void signInWithSocial() async {
     // Todo: Implement the social sign in
@@ -15,7 +18,7 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void signOut() {
+  void signOut() async {
     _authState = AuthStateEnum.unauthenticated;
     notifyListeners();
   }

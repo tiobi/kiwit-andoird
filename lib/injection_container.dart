@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:kiwit/core/providers/app_size_provider.dart';
 import 'package:kiwit/core/responsive/providers/page_controller_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'core/responsive/layouts/desktop_layout.dart';
 import 'core/responsive/layouts/mobile_layout.dart';
 import 'core/responsive/layouts/responsive_layout.dart';
@@ -10,7 +11,7 @@ import 'features/auth/presentation/providers/auth_provider.dart';
 final getIt = GetIt.instance;
 
 Future<void> initializeDependencies() async {
-  /// Top-Level Providers
+  /// Top-Level Providers and Services
   ///
   getIt.registerLazySingleton<AppSizeProvider>(
     () => AppSizeProvider(),
@@ -18,6 +19,9 @@ Future<void> initializeDependencies() async {
   getIt.registerLazySingleton<PageControllerProvider>(
     () => PageControllerProvider(),
   );
+  getIt.registerSingletonAsync<SharedPreferences>(() async {
+    return await SharedPreferences.getInstance();
+  });
 
   /// Layout
   ///
@@ -40,5 +44,9 @@ Future<void> initializeDependencies() async {
 
   /// Auth
   ///
-  getIt.registerLazySingleton<AuthProvider>(() => AuthProvider());
+  getIt.registerLazySingleton<AuthProvider>(
+    () => AuthProvider(
+      sharedPreferences: getIt<SharedPreferences>(),
+    ),
+  );
 }

@@ -53,6 +53,7 @@ class MobileLayout extends StatelessWidget {
       extendBody: true,
       body: Consumer<PageControllerProvider>(
         builder: (context, pageControllerProvider, _) => PageView(
+          physics: const NeverScrollableScrollPhysics(),
           controller: pageControllerProvider.pageController,
           onPageChanged: (index) {
             pageControllerProvider.setIndex(index: index);
