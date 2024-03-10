@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:kiwit/core/providers/app_size_provider.dart';
-import 'package:kiwit/core/responsive/providers/layout_provider.dart';
+import 'package:kiwit/core/responsive/providers/page_controller_provider.dart';
 import 'core/responsive/layouts/desktop_layout.dart';
 import 'core/responsive/layouts/mobile_layout.dart';
 import 'core/responsive/layouts/responsive_layout.dart';

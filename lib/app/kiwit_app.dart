@@ -2,7 +2,7 @@
 ///
 import 'package:flutter/material.dart';
 import 'package:kiwit/core/providers/app_size_provider.dart';
-import 'package:kiwit/core/responsive/providers/layout_provider.dart';
+import 'package:kiwit/core/responsive/providers/page_controller_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../core/responsive/layouts/responsive_layout.dart';

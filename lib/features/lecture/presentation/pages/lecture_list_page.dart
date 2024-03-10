@@ -5,12 +5,6 @@ class LectureListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Column(
-        children: [
-          Center(child: Text('Lecture List Page')),
-        ],
-      ),
-    );
+    return const Center(child: Text('Lecture List Page'));
   }
 }

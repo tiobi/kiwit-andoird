@@ -1,5 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:kiwit/core/responsive/providers/layout_provider.dart';
+import 'package:kiwit/core/responsive/providers/page_controller_provider.dart';
 import 'package:kiwit/features/featured/presentation/pages/home_page.dart';
 import 'package:kiwit/injection_container.dart';
 import 'package:provider/provider.dart';
@@ -52,9 +53,7 @@ class MobileLayout extends StatelessWidget {
       extendBody: true,
       body: Consumer<PageControllerProvider>(
         builder: (context, pageControllerProvider, _) => PageView(
-          controller: PageController(
-            initialPage: pageControllerProvider.index,
-          ),
+          controller: pageControllerProvider.pageController,
           onPageChanged: (index) {
             pageControllerProvider.setIndex(index: index);
           },

@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 
 class PageControllerProvider extends ChangeNotifier {
   int _selectedIndex = 0;
+  final PageController _pageController = PageController(initialPage: 0);
 
   int get index => _selectedIndex;
+  PageController get pageController => _pageController;
 
   void setIndex({
     required int index,
   }) {
     _selectedIndex = index;
-    print('Index: $_selectedIndex');
+    _pageController.jumpToPage(index);
+
     notifyListeners();
   }
 }
