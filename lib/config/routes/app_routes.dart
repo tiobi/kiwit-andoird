@@ -5,11 +5,13 @@ import 'package:kiwit/core/responsive/layouts/tablet_layout.dart';
 import 'package:kiwit/features/auth/presentation/pages/log_in_page.dart';
 import 'package:kiwit/features/featured/presentation/pages/home_page.dart';
 import 'package:kiwit/features/gpt/presentation/pages/gpt_list_page.dart';
+import 'package:kiwit/features/gpt/presentation/pages/gpt_result_page.dart';
 import 'package:kiwit/features/lecture/presentation/pages/lecture_list_page.dart';
 import 'package:kiwit/features/quiz/presentation/pages/quiz_list_page.dart';
 import 'package:kiwit/features/user/presentation/pages/user_profile_page.dart';
 
 import '../../core/responsive/layouts/mobile_layout.dart';
+import '../../features/gpt/presentation/pages/gpt_content_page.dart';
 import '../../features/lecture/presentation/pages/lecture_content_page.dart';
 import '../../features/lecture/presentation/pages/lecture_level_page.dart';
 import '../../features/quiz/presentation/pages/quiz_content_page.dart';
@@ -137,12 +139,12 @@ class AppRouteManager {
 
       case AppRoutes.gptContent:
         return MaterialPageRoute(
-          builder: (context) => const ErrorPage(),
+          builder: (context) => const GptContentPage(),
         );
 
       case AppRoutes.gptResult:
         return MaterialPageRoute(
-          builder: (context) => const ErrorPage(),
+          builder: (context) => const GptResultPage(),
         );
 
       default:
