@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kiwit/core/responsive/layouts/desktop_layout.dart';
+import 'package:kiwit/core/responsive/layouts/responsive_layout.dart';
+import 'package:kiwit/core/responsive/layouts/tablet_layout.dart';
 import 'package:kiwit/features/auth/presentation/pages/log_in_page.dart';
 import 'package:kiwit/features/featured/presentation/pages/home_page.dart';
 import 'package:kiwit/features/gpt/presentation/pages/gpt_list_page.dart';
@@ -6,12 +9,20 @@ import 'package:kiwit/features/lecture/presentation/pages/lecture_list_page.dart
 import 'package:kiwit/features/quiz/presentation/pages/quiz_list_page.dart';
 import 'package:kiwit/features/user/presentation/pages/user_profile_page.dart';
 
+import '../../core/responsive/layouts/mobile_layout.dart';
 import '../../features/lecture/presentation/pages/lecture_content_page.dart';
 import '../../features/lecture/presentation/pages/lecture_level_page.dart';
 import '../../features/quiz/presentation/pages/quiz_content_page.dart';
 import '../../features/quiz/presentation/pages/quiz_result_page.dart';
 
 class AppRoutes {
+  /// Responsive
+  ///
+  static const String responsiveLayout = "/responsive-layout";
+  static const String mobileLayout = "/mobile-layout";
+  static const String tabletLayout = "/tablet-layout";
+  static const String desktopLayout = "/desktop-layout";
+
   /// Auth
   ///
   static const String logIn = "/log-in";
@@ -49,6 +60,16 @@ class AppRoutes {
 class AppRouteManager {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case AppRoutes.responsiveLayout:
+        return MaterialPageRoute(
+          builder: (context) => ResponsiveLayout(
+            mobileLayout: MobileLayout(),
+            tabletLayout: const TabletLayout(),
+            desktopLayout: const DesktopLayout(),
+          ),
+        );
+
+      case AppRoutes.mobileLayout:
       case AppRoutes.logIn:
         return MaterialPageRoute(
           builder: (context) => const LogInPage(),

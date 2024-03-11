@@ -48,6 +48,6 @@ class QuizResultPage extends StatelessWidget {
   }
 
   void _navigateToQuizListPage(BuildContext context) {
-    Navigator.pushReplacementNamed(context, AppRoutes.quizList);
+    Navigator.pushReplacementNamed(context, AppRoutes.responsiveLayout);
   }
 }

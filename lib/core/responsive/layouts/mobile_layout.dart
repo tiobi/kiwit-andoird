@@ -47,9 +47,12 @@ class MobileLayout extends StatelessWidget {
   PageControllerProvider pageControllerProvider =
       getIt<PageControllerProvider>();
 
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       extendBody: true,
       body: Consumer<PageControllerProvider>(
         builder: (context, pageControllerProvider, _) => PageView(
@@ -63,7 +66,19 @@ class MobileLayout extends StatelessWidget {
       ),
       bottomNavigationBar: Consumer<PageControllerProvider>(
         builder: (context, pageControllerProvider, _) {
-          return buildBottomNavigationBar();
+          PageControllerProvider pageControllerProvider =
+              getIt<PageControllerProvider>();
+
+          return BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            showSelectedLabels: true,
+            showUnselectedLabels: true,
+            items: bottomNavigationBarItems,
+            currentIndex: pageControllerProvider.index,
+            onTap: (index) {
+              pageControllerProvider.setIndex(index: index);
+            },
+          );
         },
       ),
     );

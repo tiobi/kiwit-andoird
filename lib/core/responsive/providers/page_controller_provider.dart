@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 class PageControllerProvider extends ChangeNotifier {
   int _selectedIndex = 0;
@@ -12,9 +11,7 @@ class PageControllerProvider extends ChangeNotifier {
     required int index,
   }) {
     _selectedIndex = index;
-    SchedulerBinding.instance.addPostFrameCallback((_) {
-      _pageController.jumpToPage(index);
-    });
+    _pageController.jumpToPage(index);
 
     notifyListeners();
   }
