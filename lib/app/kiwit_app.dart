@@ -57,7 +57,6 @@ class KiwitApp extends StatelessWidget {
               onGenerateRoute: (settings) =>
                   AppRouteManager.generateRoute(settings),
 
-              // Todo: Setup the StreamBuilder
               home: Consumer<AuthProvider>(builder: (context, authProvider, _) {
                 AppSizeProvider appSizeProvider = getIt<AppSizeProvider>();
 
@@ -66,23 +65,30 @@ class KiwitApp extends StatelessWidget {
                 }
 
                 return FutureBuilder<AuthStateEnum>(
-                  future: authProvider.getAuthState(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
+                    future: authProvider.getAuthState(),
+                    builder: (context, snapshot) {
+                      /// Check if the snapshot has data first.
+                      /// This way, we could avoid unnecessary reloads.
+                      ///
+                      if (snapshot.data != null) {
+                        final AuthStateEnum authState = snapshot.data!;
+
+                        if (authState == AuthStateEnum.unauthenticated) {
+                          return const LogInPage();
+                        }
+
+                        return getIt<ResponsiveLayout>();
+                      }
+
+                      // Todo: Setup the Loading and Error Pages
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Scaffold();
+                        // } else if (snapshot.hasError) {
+                        //   return Text('Error: ${snapshot.error}');
+                        // }
+                      }
                       return const Scaffold();
-                    } else if (snapshot.hasError) {
-                      return Text('Error: ${snapshot.error}');
-                    }
-
-                    final AuthStateEnum authState = snapshot.data!;
-
-                    if (authState == AuthStateEnum.unauthenticated) {
-                      return const LogInPage();
-                    }
-
-                    return getIt<ResponsiveLayout>();
-                  },
-                );
+                    });
               }),
             ),
           );
