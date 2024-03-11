@@ -37,7 +37,7 @@ class SocialSignInButtonWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: InkWell(
-        onTap: () => authProvider.signInWithSocial(),
+        onTap: () => authProvider.tempSignInWithSocial(),
         child: const Center(
           child: Text("구글로 시작하기"),
         ),
@@ -55,7 +55,7 @@ class SocialSignInButtonWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: InkWell(
-        onTap: () => authProvider.signInWithSocial(),
+        onTap: () => authProvider.tempSignInWithSocial(),
         child: const Center(
           child: Text("애플로 시작하기"),
         ),
@@ -73,7 +73,7 @@ class SocialSignInButtonWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: InkWell(
-        onTap: () => authProvider.signInWithSocial(),
+        onTap: () => authProvider.tempSignInWithSocial(),
         child: const Center(
           child: Text("카카오로 시작하기"),
         ),

@@ -1,14 +1,15 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failure.dart';
+import '../../presentation/providers/auth_provider.dart';
 import '../repositories/auth_repository.dart';
 
-class DeleteAccountUseCase {
+class GetLocalAuthStateUseCase {
   final AuthRepository repository;
 
-  DeleteAccountUseCase({required this.repository});
+  GetLocalAuthStateUseCase({required this.repository});
 
-  Future<Either<Failure, Unit>> call() async {
+  Future<Either<Failure, AuthStateEnum>> call() async {
     throw UnimplementedError();
   }
 }

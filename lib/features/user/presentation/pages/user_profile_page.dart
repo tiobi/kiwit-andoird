@@ -14,7 +14,7 @@ class UserProfilePage extends StatelessWidget {
           IconButton(
             onPressed: () {
               AuthProvider authProvider = getIt<AuthProvider>();
-              authProvider.signOut();
+              authProvider.tempSignOut();
             },
             icon: const Icon(Icons.logout),
           ),

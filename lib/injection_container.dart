@@ -9,8 +9,8 @@ import 'core/responsive/layouts/desktop_layout.dart';
 import 'core/responsive/layouts/mobile_layout.dart';
 import 'core/responsive/layouts/responsive_layout.dart';
 import 'core/responsive/layouts/tablet_layout.dart';
-import 'features/auth/data/datasources/auth_datasource.dart';
-import 'features/auth/data/datasources/auth_datasource_impl.dart';
+import 'features/auth/data/datasources/remote_auth_datasource.dart';
+import 'features/auth/data/datasources/remote_auth_datasource_impl.dart';
 import 'features/auth/data/repositories/auth_repository_impl.dart';
 import 'features/auth/domain/repositories/auth_repository.dart';
 import 'features/auth/domain/usecases/sign_in_with_apple_usecase.dart';
@@ -56,12 +56,12 @@ Future<void> initializeDependencies() async {
 
   /// Auth Data Sources and Repositories
   ///
-  getIt.registerLazySingleton<AuthDataSource>(
-    () => AuthDataSourceImpl(),
+  getIt.registerLazySingleton<RemoteAuthDataSource>(
+    () => RemoteAuthDataSourceImpl(),
   );
   getIt.registerLazySingleton<AuthRepository>(
     () => AuthRepositoryImpl(
-      dataSource: getIt<AuthDataSource>(),
+      dataSource: getIt<RemoteAuthDataSource>(),
     ),
   );
 

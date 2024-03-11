@@ -3,10 +3,10 @@ import 'package:kiwit/core/errors/failure.dart';
 import 'package:kiwit/features/auth/domain/entities/auth_entity.dart';
 import 'package:kiwit/features/auth/domain/repositories/auth_repository.dart';
 
-import '../datasources/auth_datasource.dart';
+import '../datasources/remote_auth_datasource.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
-  final AuthDataSource dataSource;
+  final RemoteAuthDataSource dataSource;
 
   AuthRepositoryImpl({required this.dataSource});
 

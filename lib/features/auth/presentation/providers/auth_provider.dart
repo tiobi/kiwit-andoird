@@ -46,7 +46,7 @@ class AuthProvider extends ChangeNotifier {
         : AuthStateEnum.unauthenticated;
   }
 
-  Future<void> signInWithSocial() async {
+  Future<void> tempSignInWithSocial() async {
     // Todo: Implement the social sign in
     _authState = AuthStateEnum.authenticated;
     await sharedPreferences.setBool('isAuthenticated', true);
@@ -54,7 +54,7 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> signOut() async {
+  Future<void> tempSignOut() async {
     _authState = AuthStateEnum.unauthenticated;
     await sharedPreferences.setBool('isAuthenticated', false);
 
