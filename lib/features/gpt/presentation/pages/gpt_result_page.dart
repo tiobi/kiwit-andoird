@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:kiwit/config/routes/app_routes.dart';
 
 class GptResultPage extends StatelessWidget {
@@ -8,13 +9,15 @@ class GptResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text('GPT Result'),
+        centerTitle: true,
         backgroundColor: Colors.grey[300],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           const Center(
-            child: Text("Quiz Result"),
+            child: Text("GPT Result"),
           ),
           Center(
             child: Row(

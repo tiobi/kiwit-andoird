@@ -42,6 +42,6 @@ class GptListPage extends StatelessWidget {
   }
 
   void onPressed(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.gptContent);
+    Navigator.pushReplacementNamed(context, AppRoutes.gptContent);
   }
 }

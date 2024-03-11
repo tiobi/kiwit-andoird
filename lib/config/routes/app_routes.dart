@@ -71,7 +71,6 @@ class AppRouteManager {
           ),
         );
 
-      case AppRoutes.mobileLayout:
       case AppRoutes.logIn:
         return MaterialPageRoute(
           builder: (context) => const LogInPage(),

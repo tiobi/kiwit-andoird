@@ -16,7 +16,7 @@ class GptContentPage extends StatelessWidget {
             onPressed: () {
               _navigateToGptResultPage(context);
             },
-            child: const Text("See Quiz Result")),
+            child: const Text("See GPT Result")),
       ),
     );
   }
