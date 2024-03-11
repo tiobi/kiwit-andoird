@@ -3,7 +3,13 @@ import 'package:kiwit/core/errors/failure.dart';
 import 'package:kiwit/features/auth/domain/entities/auth_entity.dart';
 import 'package:kiwit/features/auth/domain/repositories/auth_repository.dart';
 
+import '../datasources/auth_datasource.dart';
+
 class AuthRepositoryImpl extends AuthRepository {
+  final AuthDataSource dataSource;
+
+  AuthRepositoryImpl({required this.dataSource});
+
   @override
   Future<Either<Failure, Unit>> deleteAccount() {
     // TODO: implement deleteAccount

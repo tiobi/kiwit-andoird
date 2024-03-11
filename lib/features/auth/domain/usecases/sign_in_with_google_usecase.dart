@@ -1,9 +1,9 @@
 import '../repositories/auth_repository.dart';
 
 class SignInWithGoogleUseCase {
-  final AuthRepository authRepository;
+  final AuthRepository repository;
 
-  SignInWithGoogleUseCase({required this.authRepository});
+  SignInWithGoogleUseCase({required this.repository});
 
   Future<void> call() async {
     throw UnimplementedError();

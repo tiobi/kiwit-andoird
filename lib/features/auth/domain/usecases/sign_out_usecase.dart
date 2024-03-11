@@ -1,9 +1,9 @@
 import '../repositories/auth_repository.dart';
 
 class SignOutUseCase {
-  final AuthRepository authRepository;
+  final AuthRepository repository;
 
-  SignOutUseCase({required this.authRepository});
+  SignOutUseCase({required this.repository});
 
   Future<void> call() async {
     throw UnimplementedError();
