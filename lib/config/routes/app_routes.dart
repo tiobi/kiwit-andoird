@@ -64,10 +64,10 @@ class AppRouteManager {
     switch (settings.name) {
       case AppRoutes.responsiveLayout:
         return MaterialPageRoute(
-          builder: (context) => ResponsiveLayout(
+          builder: (context) => const ResponsiveLayout(
             mobileLayout: MobileLayout(),
-            tabletLayout: const TabletLayout(),
-            desktopLayout: const DesktopLayout(),
+            tabletLayout: TabletLayout(),
+            desktopLayout: DesktopLayout(),
           ),
         );
 

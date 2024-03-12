@@ -9,7 +9,9 @@ void main() {
 
   setUp(() {
     pageController = MockPageController();
-    pageControllerProvider = PageControllerProvider();
+    pageControllerProvider = PageControllerProvider(
+      pageController: pageController,
+    );
   });
 
   group('PageControllerProvider Test.', () {

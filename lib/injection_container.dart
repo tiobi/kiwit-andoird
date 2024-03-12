@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 import 'package:kiwit/core/providers/app_size_provider.dart';
 import 'package:kiwit/core/responsive/providers/page_controller_provider.dart';
@@ -29,7 +30,9 @@ Future<void> initializeDependencies() async {
     () => AppSizeProvider(),
   );
   getIt.registerLazySingleton<PageControllerProvider>(
-    () => PageControllerProvider(),
+    () => PageControllerProvider(
+      pageController: PageController(keepPage: true, initialPage: 0),
+    ),
   );
   getIt.registerSingletonAsync<SharedPreferences>(() async {
     return await SharedPreferences.getInstance();
@@ -37,20 +40,11 @@ Future<void> initializeDependencies() async {
 
   /// Layout
   ///
-  getIt.registerLazySingleton<MobileLayout>(
-    () => MobileLayout(),
-  );
-  getIt.registerLazySingleton<TabletLayout>(
-    () => const TabletLayout(),
-  );
-  getIt.registerLazySingleton<DesktopLayout>(
-    () => const DesktopLayout(),
-  );
   getIt.registerLazySingleton<ResponsiveLayout>(
-    () => ResponsiveLayout(
-      mobileLayout: getIt<MobileLayout>(),
-      tabletLayout: getIt<TabletLayout>(),
-      desktopLayout: getIt<DesktopLayout>(),
+    () => const ResponsiveLayout(
+      mobileLayout: MobileLayout(),
+      tabletLayout: TabletLayout(),
+      desktopLayout: DesktopLayout(),
     ),
   );
 

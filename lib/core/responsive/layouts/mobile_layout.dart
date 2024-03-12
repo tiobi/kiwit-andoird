@@ -42,33 +42,25 @@ const bottomNavigationBarItems = [
 ];
 
 class MobileLayout extends StatelessWidget {
-  MobileLayout({Key? key}) : super(key: key);
-
-  PageControllerProvider pageControllerProvider =
-      getIt<PageControllerProvider>();
-
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  const MobileLayout({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final PageControllerProvider pageControllerProvider =
+        getIt<PageControllerProvider>();
+
     return Scaffold(
-      key: scaffoldKey,
       extendBody: true,
-      body: Consumer<PageControllerProvider>(
-        builder: (context, pageControllerProvider, _) => PageView(
-          physics: const NeverScrollableScrollPhysics(),
-          controller: pageControllerProvider.pageController,
-          onPageChanged: (index) {
-            pageControllerProvider.setIndex(index: index);
-          },
-          children: pageViewItems,
-        ),
+      body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
+        controller: pageControllerProvider.controller,
+        onPageChanged: (index) {
+          pageControllerProvider.setIndex(index: index);
+        },
+        children: pageViewItems,
       ),
       bottomNavigationBar: Consumer<PageControllerProvider>(
         builder: (context, pageControllerProvider, _) {
-          PageControllerProvider pageControllerProvider =
-              getIt<PageControllerProvider>();
-
           return BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             showSelectedLabels: true,
@@ -83,20 +75,4 @@ class MobileLayout extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget buildBottomNavigationBar() {
-  PageControllerProvider pageControllerProvider =
-      getIt<PageControllerProvider>();
-
-  return BottomNavigationBar(
-    type: BottomNavigationBarType.fixed,
-    showSelectedLabels: true,
-    showUnselectedLabels: true,
-    items: bottomNavigationBarItems,
-    currentIndex: pageControllerProvider.index,
-    onTap: (index) {
-      pageControllerProvider.setIndex(index: index);
-    },
-  );
 }

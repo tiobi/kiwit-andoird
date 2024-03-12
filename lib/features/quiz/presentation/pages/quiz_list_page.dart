@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kiwit/features/quiz/presentation/widgets/quiz_tile_widget.dart';
 
 import '../../../../config/routes/app_routes.dart';
-import '../../../../core/responsive/layouts/mobile_layout.dart';
 
 class QuizListPage extends StatelessWidget {
   const QuizListPage({Key? key}) : super(key: key);
@@ -36,7 +35,6 @@ class QuizListPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: buildBottomNavigationBar(),
     );
   }
 
