@@ -9,6 +9,6 @@ class DeleteAccountUseCase {
   DeleteAccountUseCase({required this.repository});
 
   Future<Either<Failure, Unit>> call() async {
-    throw UnimplementedError();
+    return repository.deleteAccount();
   }
 }
