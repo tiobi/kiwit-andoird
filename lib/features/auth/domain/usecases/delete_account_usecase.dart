@@ -8,7 +8,7 @@ class DeleteAccountUseCase {
 
   DeleteAccountUseCase({required this.repository});
 
-  Future<Either<Failure, Unit>> call() async {
-    return repository.deleteAccount();
+  Future<Either<Failure, Unit>> call({required String accessToken}) async {
+    return repository.deleteAccount(accessToken: accessToken);
   }
 }

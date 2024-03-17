@@ -116,11 +116,13 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
       ) as _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>> deleteAccount() =>
+  _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>> deleteAccount(
+          {required String? accessToken}) =>
       (super.noSuchMethod(
         Invocation.method(
           #deleteAccount,
           [],
+          {#accessToken: accessToken},
         ),
         returnValue: _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>>.value(
             _FakeEither_0<_i5.Failure, _i2.Unit>(
@@ -128,6 +130,7 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
           Invocation.method(
             #deleteAccount,
             [],
+            {#accessToken: accessToken},
           ),
         )),
         returnValueForMissingStub:
@@ -137,22 +140,23 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
           Invocation.method(
             #deleteAccount,
             [],
+            {#accessToken: accessToken},
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>> logInWithGoogle() =>
+  _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>> signInWithGoogle() =>
       (super.noSuchMethod(
         Invocation.method(
-          #logInWithGoogle,
+          #signInWithGoogle,
           [],
         ),
         returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>>.value(
             _FakeEither_0<_i5.Failure, _i6.AuthEntity>(
           this,
           Invocation.method(
-            #logInWithGoogle,
+            #signInWithGoogle,
             [],
           ),
         )),
@@ -161,24 +165,24 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
                 _FakeEither_0<_i5.Failure, _i6.AuthEntity>(
           this,
           Invocation.method(
-            #logInWithGoogle,
+            #signInWithGoogle,
             [],
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>> logInWithApple() =>
+  _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>> signInWithApple() =>
       (super.noSuchMethod(
         Invocation.method(
-          #logInWithApple,
+          #signInWithApple,
           [],
         ),
         returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>>.value(
             _FakeEither_0<_i5.Failure, _i6.AuthEntity>(
           this,
           Invocation.method(
-            #logInWithApple,
+            #signInWithApple,
             [],
           ),
         )),
@@ -187,24 +191,24 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
                 _FakeEither_0<_i5.Failure, _i6.AuthEntity>(
           this,
           Invocation.method(
-            #logInWithApple,
+            #signInWithApple,
             [],
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>> logInWithKakao() =>
+  _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>> signInWithKakao() =>
       (super.noSuchMethod(
         Invocation.method(
-          #logInWithKakao,
+          #signInWithKakao,
           [],
         ),
         returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>>.value(
             _FakeEither_0<_i5.Failure, _i6.AuthEntity>(
           this,
           Invocation.method(
-            #logInWithKakao,
+            #signInWithKakao,
             [],
           ),
         )),
@@ -213,7 +217,7 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
                 _FakeEither_0<_i5.Failure, _i6.AuthEntity>(
           this,
           Invocation.method(
-            #logInWithKakao,
+            #signInWithKakao,
             [],
           ),
         )),

@@ -5,6 +5,11 @@ class SignInWithAppleUseCase {
 
   SignInWithAppleUseCase({required this.repository});
 
+  /// When Status Code 202 is returned,
+  /// the user is not registered to the app yet.
+  /// Navigate to the registration page.
+  ///
+
   Future<void> call() async {
     throw UnimplementedError();
   }

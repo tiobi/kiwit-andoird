@@ -20,32 +20,32 @@ class AuthEntityMapper extends ClassMapperBase<AuthEntity> {
   @override
   final String id = 'AuthEntity';
 
-  static int _$user_id(AuthEntity v) => v.user_id;
-  static const Field<AuthEntity, int> _f$user_id = Field('user_id', _$user_id);
-  static String _$refresh_token(AuthEntity v) => v.refresh_token;
-  static const Field<AuthEntity, String> _f$refresh_token =
-      Field('refresh_token', _$refresh_token);
-  static String _$fcm_token(AuthEntity v) => v.fcm_token;
-  static const Field<AuthEntity, String> _f$fcm_token =
-      Field('fcm_token', _$fcm_token);
-  static DateTime _$latest_visit(AuthEntity v) => v.latest_visit;
-  static const Field<AuthEntity, DateTime> _f$latest_visit =
-      Field('latest_visit', _$latest_visit);
+  static int _$userId(AuthEntity v) => v.userId;
+  static const Field<AuthEntity, int> _f$userId = Field('userId', _$userId);
+  static String _$refreshToken(AuthEntity v) => v.refreshToken;
+  static const Field<AuthEntity, String> _f$refreshToken =
+      Field('refreshToken', _$refreshToken);
+  static String _$fcmToken(AuthEntity v) => v.fcmToken;
+  static const Field<AuthEntity, String> _f$fcmToken =
+      Field('fcmToken', _$fcmToken);
+  static DateTime _$latestVisit(AuthEntity v) => v.latestVisit;
+  static const Field<AuthEntity, DateTime> _f$latestVisit =
+      Field('latestVisit', _$latestVisit);
 
   @override
   final MappableFields<AuthEntity> fields = const {
-    #user_id: _f$user_id,
-    #refresh_token: _f$refresh_token,
-    #fcm_token: _f$fcm_token,
-    #latest_visit: _f$latest_visit,
+    #userId: _f$userId,
+    #refreshToken: _f$refreshToken,
+    #fcmToken: _f$fcmToken,
+    #latestVisit: _f$latestVisit,
   };
 
   static AuthEntity _instantiate(DecodingData data) {
     return AuthEntity(
-        user_id: data.dec(_f$user_id),
-        refresh_token: data.dec(_f$refresh_token),
-        fcm_token: data.dec(_f$fcm_token),
-        latest_visit: data.dec(_f$latest_visit));
+        userId: data.dec(_f$userId),
+        refreshToken: data.dec(_f$refreshToken),
+        fcmToken: data.dec(_f$fcmToken),
+        latestVisit: data.dec(_f$latestVisit));
   }
 
   @override
@@ -102,10 +102,10 @@ extension AuthEntityValueCopy<$R, $Out>
 abstract class AuthEntityCopyWith<$R, $In extends AuthEntity, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   $R call(
-      {int? user_id,
-      String? refresh_token,
-      String? fcm_token,
-      DateTime? latest_visit});
+      {int? userId,
+      String? refreshToken,
+      String? fcmToken,
+      DateTime? latestVisit});
   AuthEntityCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -119,22 +119,22 @@ class _AuthEntityCopyWithImpl<$R, $Out>
       AuthEntityMapper.ensureInitialized();
   @override
   $R call(
-          {int? user_id,
-          String? refresh_token,
-          String? fcm_token,
-          DateTime? latest_visit}) =>
+          {int? userId,
+          String? refreshToken,
+          String? fcmToken,
+          DateTime? latestVisit}) =>
       $apply(FieldCopyWithData({
-        if (user_id != null) #user_id: user_id,
-        if (refresh_token != null) #refresh_token: refresh_token,
-        if (fcm_token != null) #fcm_token: fcm_token,
-        if (latest_visit != null) #latest_visit: latest_visit
+        if (userId != null) #userId: userId,
+        if (refreshToken != null) #refreshToken: refreshToken,
+        if (fcmToken != null) #fcmToken: fcmToken,
+        if (latestVisit != null) #latestVisit: latestVisit
       }));
   @override
   AuthEntity $make(CopyWithData data) => AuthEntity(
-      user_id: data.get(#user_id, or: $value.user_id),
-      refresh_token: data.get(#refresh_token, or: $value.refresh_token),
-      fcm_token: data.get(#fcm_token, or: $value.fcm_token),
-      latest_visit: data.get(#latest_visit, or: $value.latest_visit));
+      userId: data.get(#userId, or: $value.userId),
+      refreshToken: data.get(#refreshToken, or: $value.refreshToken),
+      fcmToken: data.get(#fcmToken, or: $value.fcmToken),
+      latestVisit: data.get(#latestVisit, or: $value.latestVisit));
 
   @override
   AuthEntityCopyWith<$R2, AuthEntity, $Out2> $chain<$R2, $Out2>(

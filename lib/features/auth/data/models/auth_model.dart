@@ -6,15 +6,15 @@ part 'auth_model.mapper.dart';
 @MappableClass()
 class AuthModel extends AuthEntity with AuthModelMappable {
   AuthModel({
-    required int user_id,
-    required String refresh_token,
-    required String fcm_token,
-    required DateTime latest_visit,
+    required int userId,
+    required String refreshToken,
+    required String fcmToken,
+    required DateTime latestVisit,
   }) : super(
-          user_id: user_id,
-          refresh_token: refresh_token,
-          fcm_token: fcm_token,
-          latest_visit: latest_visit,
+          userId: userId,
+          refreshToken: refreshToken,
+          fcmToken: fcmToken,
+          latestVisit: latestVisit,
         );
 
   static const fromMap = AuthModelMapper.fromMap;
