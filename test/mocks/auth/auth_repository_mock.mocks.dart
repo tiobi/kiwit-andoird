@@ -90,11 +90,13 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
       ) as _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>> signOut() =>
+  _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>> signOut(
+          {required String? accessToken}) =>
       (super.noSuchMethod(
         Invocation.method(
           #signOut,
           [],
+          {#accessToken: accessToken},
         ),
         returnValue: _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>>.value(
             _FakeEither_0<_i5.Failure, _i2.Unit>(
@@ -102,6 +104,7 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
           Invocation.method(
             #signOut,
             [],
+            {#accessToken: accessToken},
           ),
         )),
         returnValueForMissingStub:
@@ -111,6 +114,7 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
           Invocation.method(
             #signOut,
             [],
+            {#accessToken: accessToken},
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>>);

@@ -60,4 +60,19 @@ class AuthProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  Future<void> deleteUser() async {
+    final accessToken = sharedPreferences.getString('accessToken') ?? '';
+    final result = await deleteAccountUseCase(accessToken: accessToken);
+
+    if (result.isRight()) {
+      _authState = AuthStateEnum.unauthenticated;
+      await sharedPreferences.setBool('isAuthenticated', false);
+      await sharedPreferences.remove('accessToken');
+      await sharedPreferences.remove('refreshToken');
+      notifyListeners();
+    } else if (result.isLeft()) {
+      // Todo: Handle the error
+    }
+  }
 }

@@ -4,16 +4,18 @@ part 'auth_entity.mapper.dart';
 
 @MappableClass()
 class AuthEntity with AuthEntityMappable {
-  final int userId;
-  final String refreshToken;
-  final String fcmToken;
-  final DateTime latestVisit;
+  String? email;
+  String? nickname;
+  String? accessToken;
+  String? refreshToken;
+  String? provider;
 
   AuthEntity({
-    required this.userId,
-    required this.refreshToken,
-    required this.fcmToken,
-    required this.latestVisit,
+    this.email,
+    this.nickname,
+    this.accessToken,
+    this.refreshToken,
+    this.provider,
   });
 
   static const fromMap = AuthEntityMapper.fromMap;

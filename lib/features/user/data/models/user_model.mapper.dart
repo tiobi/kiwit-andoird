@@ -21,20 +21,23 @@ class UserModelMapper extends ClassMapperBase<UserModel> {
   @override
   final String id = 'UserModel';
 
-  static int _$id(UserModel v) => v.id;
-  static const Field<UserModel, int> _f$id = Field('id', _$id);
-  static String _$email(UserModel v) => v.email;
-  static const Field<UserModel, String> _f$email = Field('email', _$email);
-  static String _$nickname(UserModel v) => v.nickname;
+  static int? _$id(UserModel v) => v.id;
+  static const Field<UserModel, int> _f$id = Field('id', _$id, opt: true);
+  static String? _$email(UserModel v) => v.email;
+  static const Field<UserModel, String> _f$email =
+      Field('email', _$email, opt: true);
+  static String? _$nickname(UserModel v) => v.nickname;
   static const Field<UserModel, String> _f$nickname =
-      Field('nickname', _$nickname);
-  static int _$point(UserModel v) => v.point;
-  static const Field<UserModel, int> _f$point = Field('point', _$point);
-  static PlanEnum _$plan(UserModel v) => v.plan;
-  static const Field<UserModel, PlanEnum> _f$plan = Field('plan', _$plan);
-  static StatusEnum _$status(UserModel v) => v.status;
+      Field('nickname', _$nickname, opt: true);
+  static int? _$point(UserModel v) => v.point;
+  static const Field<UserModel, int> _f$point =
+      Field('point', _$point, opt: true);
+  static PlanEnum? _$plan(UserModel v) => v.plan;
+  static const Field<UserModel, PlanEnum> _f$plan =
+      Field('plan', _$plan, opt: true);
+  static StatusEnum? _$status(UserModel v) => v.status;
   static const Field<UserModel, StatusEnum> _f$status =
-      Field('status', _$status);
+      Field('status', _$status, opt: true);
 
   @override
   final MappableFields<UserModel> fields = const {
@@ -129,19 +132,19 @@ class _UserModelCopyWithImpl<$R, $Out>
       UserModelMapper.ensureInitialized();
   @override
   $R call(
-          {int? id,
-          String? email,
-          String? nickname,
-          int? point,
-          PlanEnum? plan,
-          StatusEnum? status}) =>
+          {Object? id = $none,
+          Object? email = $none,
+          Object? nickname = $none,
+          Object? point = $none,
+          Object? plan = $none,
+          Object? status = $none}) =>
       $apply(FieldCopyWithData({
-        if (id != null) #id: id,
-        if (email != null) #email: email,
-        if (nickname != null) #nickname: nickname,
-        if (point != null) #point: point,
-        if (plan != null) #plan: plan,
-        if (status != null) #status: status
+        if (id != $none) #id: id,
+        if (email != $none) #email: email,
+        if (nickname != $none) #nickname: nickname,
+        if (point != $none) #point: point,
+        if (plan != $none) #plan: plan,
+        if (status != $none) #status: status
       }));
   @override
   UserModel $make(CopyWithData data) => UserModel(

@@ -20,32 +20,38 @@ class AuthEntityMapper extends ClassMapperBase<AuthEntity> {
   @override
   final String id = 'AuthEntity';
 
-  static int _$userId(AuthEntity v) => v.userId;
-  static const Field<AuthEntity, int> _f$userId = Field('userId', _$userId);
-  static String _$refreshToken(AuthEntity v) => v.refreshToken;
+  static String? _$email(AuthEntity v) => v.email;
+  static const Field<AuthEntity, String> _f$email =
+      Field('email', _$email, opt: true);
+  static String? _$nickname(AuthEntity v) => v.nickname;
+  static const Field<AuthEntity, String> _f$nickname =
+      Field('nickname', _$nickname, opt: true);
+  static String? _$accessToken(AuthEntity v) => v.accessToken;
+  static const Field<AuthEntity, String> _f$accessToken =
+      Field('accessToken', _$accessToken, opt: true);
+  static String? _$refreshToken(AuthEntity v) => v.refreshToken;
   static const Field<AuthEntity, String> _f$refreshToken =
-      Field('refreshToken', _$refreshToken);
-  static String _$fcmToken(AuthEntity v) => v.fcmToken;
-  static const Field<AuthEntity, String> _f$fcmToken =
-      Field('fcmToken', _$fcmToken);
-  static DateTime _$latestVisit(AuthEntity v) => v.latestVisit;
-  static const Field<AuthEntity, DateTime> _f$latestVisit =
-      Field('latestVisit', _$latestVisit);
+      Field('refreshToken', _$refreshToken, opt: true);
+  static String? _$provider(AuthEntity v) => v.provider;
+  static const Field<AuthEntity, String> _f$provider =
+      Field('provider', _$provider, opt: true);
 
   @override
   final MappableFields<AuthEntity> fields = const {
-    #userId: _f$userId,
+    #email: _f$email,
+    #nickname: _f$nickname,
+    #accessToken: _f$accessToken,
     #refreshToken: _f$refreshToken,
-    #fcmToken: _f$fcmToken,
-    #latestVisit: _f$latestVisit,
+    #provider: _f$provider,
   };
 
   static AuthEntity _instantiate(DecodingData data) {
     return AuthEntity(
-        userId: data.dec(_f$userId),
+        email: data.dec(_f$email),
+        nickname: data.dec(_f$nickname),
+        accessToken: data.dec(_f$accessToken),
         refreshToken: data.dec(_f$refreshToken),
-        fcmToken: data.dec(_f$fcmToken),
-        latestVisit: data.dec(_f$latestVisit));
+        provider: data.dec(_f$provider));
   }
 
   @override
@@ -102,10 +108,11 @@ extension AuthEntityValueCopy<$R, $Out>
 abstract class AuthEntityCopyWith<$R, $In extends AuthEntity, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   $R call(
-      {int? userId,
+      {String? email,
+      String? nickname,
+      String? accessToken,
       String? refreshToken,
-      String? fcmToken,
-      DateTime? latestVisit});
+      String? provider});
   AuthEntityCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -119,22 +126,25 @@ class _AuthEntityCopyWithImpl<$R, $Out>
       AuthEntityMapper.ensureInitialized();
   @override
   $R call(
-          {int? userId,
-          String? refreshToken,
-          String? fcmToken,
-          DateTime? latestVisit}) =>
+          {Object? email = $none,
+          Object? nickname = $none,
+          Object? accessToken = $none,
+          Object? refreshToken = $none,
+          Object? provider = $none}) =>
       $apply(FieldCopyWithData({
-        if (userId != null) #userId: userId,
-        if (refreshToken != null) #refreshToken: refreshToken,
-        if (fcmToken != null) #fcmToken: fcmToken,
-        if (latestVisit != null) #latestVisit: latestVisit
+        if (email != $none) #email: email,
+        if (nickname != $none) #nickname: nickname,
+        if (accessToken != $none) #accessToken: accessToken,
+        if (refreshToken != $none) #refreshToken: refreshToken,
+        if (provider != $none) #provider: provider
       }));
   @override
   AuthEntity $make(CopyWithData data) => AuthEntity(
-      userId: data.get(#userId, or: $value.userId),
+      email: data.get(#email, or: $value.email),
+      nickname: data.get(#nickname, or: $value.nickname),
+      accessToken: data.get(#accessToken, or: $value.accessToken),
       refreshToken: data.get(#refreshToken, or: $value.refreshToken),
-      fcmToken: data.get(#fcmToken, or: $value.fcmToken),
-      latestVisit: data.get(#latestVisit, or: $value.latestVisit));
+      provider: data.get(#provider, or: $value.provider));
 
   @override
   AuthEntityCopyWith<$R2, AuthEntity, $Out2> $chain<$R2, $Out2>(

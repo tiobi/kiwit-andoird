@@ -1,3 +1,6 @@
+import 'package:dartz/dartz.dart';
+
+import '../../../../core/errors/failure.dart';
 import '../repositories/auth_repository.dart';
 
 class SignOutUseCase {
@@ -5,7 +8,7 @@ class SignOutUseCase {
 
   SignOutUseCase({required this.repository});
 
-  Future<void> call() async {
-    throw UnimplementedError();
+  Future<Either<Failure, Unit>> call({required String accessToken}) async {
+    return repository.signOut(accessToken: accessToken);
   }
 }

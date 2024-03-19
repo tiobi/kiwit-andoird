@@ -8,20 +8,20 @@ enum StatusEnum { active, inactive, banned, deleted }
 
 @MappableClass()
 class UserEntity with UserEntityMappable {
-  final int id;
-  final String email;
-  final String nickname;
-  final int point;
-  final PlanEnum plan;
-  final StatusEnum status;
+  int? id;
+  String? email;
+  String? nickname;
+  int? point;
+  PlanEnum? plan;
+  StatusEnum? status;
 
   UserEntity({
-    required this.id,
-    required this.email,
-    required this.nickname,
-    required this.point,
-    required this.plan,
-    required this.status,
+    this.id,
+    this.email,
+    this.nickname,
+    this.point,
+    this.plan,
+    this.status,
   });
 
   static const fromMap = UserEntityMapper.fromMap;

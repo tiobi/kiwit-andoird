@@ -6,7 +6,9 @@ import '../entities/auth_entity.dart';
 abstract class AuthRepository {
   Future<Either<Failure, AuthEntity>> signUp();
   Future<Either<Failure, AuthEntity>> signIn();
-  Future<Either<Failure, Unit>> signOut();
+  Future<Either<Failure, Unit>> signOut({
+    required String accessToken,
+  });
   Future<Either<Failure, Unit>> deleteAccount({
     required String accessToken,
   });

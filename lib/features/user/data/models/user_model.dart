@@ -6,20 +6,13 @@ part 'user_model.mapper.dart';
 @MappableClass()
 class UserModel extends UserEntity with UserModelMappable {
   UserModel({
-    required int id,
-    required String email,
-    required String nickname,
-    required int point,
-    required PlanEnum plan,
-    required StatusEnum status,
-  }) : super(
-          id: id,
-          email: email,
-          nickname: nickname,
-          point: point,
-          plan: plan,
-          status: status,
-        );
+    int? id,
+    String? email,
+    String? nickname,
+    int? point,
+    PlanEnum? plan,
+    StatusEnum? status,
+  });
 
   static const fromMap = UserModelMapper.fromMap;
   static const fromJson = UserModelMapper.fromJson;

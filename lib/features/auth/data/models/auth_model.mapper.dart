@@ -21,32 +21,38 @@ class AuthModelMapper extends ClassMapperBase<AuthModel> {
   @override
   final String id = 'AuthModel';
 
-  static int _$userId(AuthModel v) => v.userId;
-  static const Field<AuthModel, int> _f$userId = Field('userId', _$userId);
-  static String _$refreshToken(AuthModel v) => v.refreshToken;
+  static String? _$email(AuthModel v) => v.email;
+  static const Field<AuthModel, String> _f$email =
+      Field('email', _$email, opt: true);
+  static String? _$nickname(AuthModel v) => v.nickname;
+  static const Field<AuthModel, String> _f$nickname =
+      Field('nickname', _$nickname, opt: true);
+  static String? _$accessToken(AuthModel v) => v.accessToken;
+  static const Field<AuthModel, String> _f$accessToken =
+      Field('accessToken', _$accessToken, opt: true);
+  static String? _$refreshToken(AuthModel v) => v.refreshToken;
   static const Field<AuthModel, String> _f$refreshToken =
-      Field('refreshToken', _$refreshToken);
-  static String _$fcmToken(AuthModel v) => v.fcmToken;
-  static const Field<AuthModel, String> _f$fcmToken =
-      Field('fcmToken', _$fcmToken);
-  static DateTime _$latestVisit(AuthModel v) => v.latestVisit;
-  static const Field<AuthModel, DateTime> _f$latestVisit =
-      Field('latestVisit', _$latestVisit);
+      Field('refreshToken', _$refreshToken, opt: true);
+  static String? _$provider(AuthModel v) => v.provider;
+  static const Field<AuthModel, String> _f$provider =
+      Field('provider', _$provider, opt: true);
 
   @override
   final MappableFields<AuthModel> fields = const {
-    #userId: _f$userId,
+    #email: _f$email,
+    #nickname: _f$nickname,
+    #accessToken: _f$accessToken,
     #refreshToken: _f$refreshToken,
-    #fcmToken: _f$fcmToken,
-    #latestVisit: _f$latestVisit,
+    #provider: _f$provider,
   };
 
   static AuthModel _instantiate(DecodingData data) {
     return AuthModel(
-        userId: data.dec(_f$userId),
+        email: data.dec(_f$email),
+        nickname: data.dec(_f$nickname),
+        accessToken: data.dec(_f$accessToken),
         refreshToken: data.dec(_f$refreshToken),
-        fcmToken: data.dec(_f$fcmToken),
-        latestVisit: data.dec(_f$latestVisit));
+        provider: data.dec(_f$provider));
   }
 
   @override
@@ -103,10 +109,11 @@ abstract class AuthModelCopyWith<$R, $In extends AuthModel, $Out>
     implements AuthEntityCopyWith<$R, $In, $Out> {
   @override
   $R call(
-      {int? userId,
+      {String? email,
+      String? nickname,
+      String? accessToken,
       String? refreshToken,
-      String? fcmToken,
-      DateTime? latestVisit});
+      String? provider});
   AuthModelCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -120,22 +127,25 @@ class _AuthModelCopyWithImpl<$R, $Out>
       AuthModelMapper.ensureInitialized();
   @override
   $R call(
-          {int? userId,
-          String? refreshToken,
-          String? fcmToken,
-          DateTime? latestVisit}) =>
+          {Object? email = $none,
+          Object? nickname = $none,
+          Object? accessToken = $none,
+          Object? refreshToken = $none,
+          Object? provider = $none}) =>
       $apply(FieldCopyWithData({
-        if (userId != null) #userId: userId,
-        if (refreshToken != null) #refreshToken: refreshToken,
-        if (fcmToken != null) #fcmToken: fcmToken,
-        if (latestVisit != null) #latestVisit: latestVisit
+        if (email != $none) #email: email,
+        if (nickname != $none) #nickname: nickname,
+        if (accessToken != $none) #accessToken: accessToken,
+        if (refreshToken != $none) #refreshToken: refreshToken,
+        if (provider != $none) #provider: provider
       }));
   @override
   AuthModel $make(CopyWithData data) => AuthModel(
-      userId: data.get(#userId, or: $value.userId),
+      email: data.get(#email, or: $value.email),
+      nickname: data.get(#nickname, or: $value.nickname),
+      accessToken: data.get(#accessToken, or: $value.accessToken),
       refreshToken: data.get(#refreshToken, or: $value.refreshToken),
-      fcmToken: data.get(#fcmToken, or: $value.fcmToken),
-      latestVisit: data.get(#latestVisit, or: $value.latestVisit));
+      provider: data.get(#provider, or: $value.provider));
 
   @override
   AuthModelCopyWith<$R2, AuthModel, $Out2> $chain<$R2, $Out2>(

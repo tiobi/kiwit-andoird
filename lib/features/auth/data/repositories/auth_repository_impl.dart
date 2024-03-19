@@ -3,6 +3,7 @@ import 'package:kiwit/core/errors/auth_failure.dart';
 import 'package:kiwit/core/errors/failure.dart';
 import 'package:kiwit/features/auth/domain/entities/auth_entity.dart';
 import 'package:kiwit/features/auth/domain/repositories/auth_repository.dart';
+import 'package:retrofit/retrofit.dart';
 
 import '../datasources/remote/remote_auth_datasource.dart';
 
@@ -15,15 +16,22 @@ class AuthRepositoryImpl extends AuthRepository {
   Future<Either<Failure, Unit>> deleteAccount({
     required String accessToken,
   }) async {
-    final response = await dataSource.deleteAccount(accessToken: accessToken);
+    try {
+      final HttpResponse response =
+          await dataSource.deleteAccount(accessToken: accessToken);
+      final int? code = response.response.statusCode;
 
-    if (response.statusCode == 200) {
-      return const Right(unit);
-    } else {
-      return Left(AuthFailure(
-        code: response.statusCode,
-        message: response.body,
-      ));
+      if (code == 200) {
+        return const Right(unit);
+      } else if (code == 400) {
+        return Left(AuthFailure(code: 400, message: 'Invalid Request'));
+      } else if (code == 401) {
+        return Left(AuthFailure(code: 401, message: 'Invalid Access Token'));
+      } else {
+        return Left(AuthFailure(code: 500, message: 'Server Error'));
+      }
+    } catch (e) {
+      return Left(AuthFailure(code: 500, message: 'Server Error'));
     }
   }
 
@@ -52,9 +60,24 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<Either<Failure, Unit>> signOut() {
-    // TODO: implement signOut
-    throw UnimplementedError();
+  Future<Either<Failure, Unit>> signOut({
+    required String accessToken,
+  }) async {
+    try {
+      final HttpResponse response =
+          await dataSource.signOut(accessToken: accessToken);
+      final int? code = response.response.statusCode;
+
+      if (code == 200) {
+        return const Right(unit);
+      } else if (code == 401) {
+        return Left(AuthFailure(code: 401, message: 'Invalid Access Token'));
+      } else {
+        return Left(AuthFailure(code: 500, message: 'Server Error'));
+      }
+    } catch (e) {
+      return Left(AuthFailure(code: 500, message: 'Server Error'));
+    }
   }
 
   @override
