@@ -5,7 +5,7 @@ import 'package:kiwit/core/errors/failure.dart';
 import 'package:kiwit/features/auth/domain/usecases/delete_account_usecase.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../../mocks/auth/auth_repository_mock.mocks.dart';
+import '../../../../mocks/auth/mock_auth_repository.mocks.dart';
 
 void main() {
   late DeleteAccountUseCase useCase;
@@ -18,7 +18,7 @@ void main() {
 
   final Failure failure = AuthFailure(
     code: 400,
-    message: 'error',
+    message: 'Invalid Request',
   );
 
   const String tAuthToken = 'token';
