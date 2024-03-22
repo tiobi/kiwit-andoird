@@ -28,4 +28,4 @@ class MockSignOutUseCase extends Mock implements SignOutUseCase {}
 
 class MockSignUpUseCase extends Mock implements SignUpUseCase {}
 
-class MockUpdateTokenUseCase extends Mock implements UpdateTokenUseCase {}
+class MockUpdateTokenUseCase extends Mock implements UpdateAccessTokenUseCase {}

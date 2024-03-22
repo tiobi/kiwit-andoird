@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:kiwit/core/errors/auth_failure.dart';
 import 'package:kiwit/core/errors/failure.dart';
-import 'package:kiwit/features/auth/data/models/jwt_model.dart';
 import 'package:kiwit/features/auth/domain/repositories/auth_repository.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -115,7 +114,7 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<Either<Failure, JWTModel>> updateToken(
+  Future<Either<Failure, AuthModel>> updateAccessToken(
       {required String refreshToken}) async {
     throw UnimplementedError();
   }

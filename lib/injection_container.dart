@@ -101,8 +101,8 @@ Future<void> initializeDependencies() async {
       repository: getIt<AuthRepository>(),
     ),
   );
-  getIt.registerLazySingleton<UpdateTokenUseCase>(
-    () => UpdateTokenUseCase(
+  getIt.registerLazySingleton<UpdateAccessTokenUseCase>(
+    () => UpdateAccessTokenUseCase(
       repository: getIt<AuthRepository>(),
     ),
   );
@@ -119,7 +119,7 @@ Future<void> initializeDependencies() async {
       signInWithKakaoUseCase: getIt<SignInWithKakaoUseCase>(),
       signOutUseCase: getIt<SignOutUseCase>(),
       signUpUseCase: getIt<SignUpUseCase>(),
-      updateTokenUseCase: getIt<UpdateTokenUseCase>(),
+      updateTokenUseCase: getIt<UpdateAccessTokenUseCase>(),
     ),
   );
 }

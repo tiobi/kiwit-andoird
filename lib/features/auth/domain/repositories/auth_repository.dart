@@ -21,7 +21,7 @@ abstract class AuthRepository {
   Future<Either<Failure, AuthEntity>> signInWithApple();
   Future<Either<Failure, AuthEntity>> signInWithKakao();
 
-  Future<Either<Failure, JWTModel>> updateToken({
+  Future<Either<Failure, AuthEntity>> updateAccessToken({
     required String refreshToken,
   });
 }

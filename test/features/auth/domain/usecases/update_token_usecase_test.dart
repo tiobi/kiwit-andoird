@@ -2,66 +2,66 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kiwit/core/errors/auth_failure.dart';
 import 'package:kiwit/core/errors/failure.dart';
-import 'package:kiwit/features/auth/data/models/jwt_model.dart';
+import 'package:kiwit/features/auth/domain/entities/auth_entity.dart';
 import 'package:kiwit/features/auth/domain/usecases/update_token_usecase.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../mocks/auth/mock_auth_repository.mocks.dart';
 
 void main() {
-  late UpdateTokenUseCase useCase;
+  late UpdateAccessTokenUseCase useCase;
   late MockAuthRepository repository;
 
   setUp(() {
     repository = MockAuthRepository();
-    useCase = UpdateTokenUseCase(repository: repository);
+    useCase = UpdateAccessTokenUseCase(
+      repository: repository,
+    );
   });
 
-  const String tAccessToken = 'accessToken';
-  const String tNewAccessToken = 'newAccessToken';
   const String tRefreshToken = 'refreshToken';
+  const String tNewAccessToken = 'newAccessToken';
   const String tNewRefreshToken = 'newRefreshToken';
-  const String tInvalidRefreshToken = 'invalidRefreshToken';
 
-  final JWTModel tJWTRequest =
-      JWTModel(accessToken: tAccessToken, refreshToken: tRefreshToken);
-  final JWTModel tInvalidJWTRequest =
-      JWTModel(accessToken: tAccessToken, refreshToken: tInvalidRefreshToken);
+  final AuthEntity tAuthEntity = AuthEntity(
+    refreshToken: tRefreshToken,
+  );
+  final AuthEntity tNewAuthEntity = AuthEntity(
+    accessToken: tNewAccessToken,
+    refreshToken: tNewRefreshToken,
+  );
 
-  final JWTModel tJWTResponse =
-      JWTModel(accessToken: tNewAccessToken, refreshToken: tNewRefreshToken);
-
-  final Failure tInvalidAccessTokenFailure =
-      AuthFailure(code: 401, message: 'Invalid Access Token');
+  final Failure tFailure = AuthFailure(
+    message: 'error',
+    code: 400,
+  );
 
   group('UpdateTokenUseCase Test', () {
-    test('should return JWT when update is successful', () async {
+    test('should get a new AuthEntity when update is successful', () async {
       // Arrange
-      when(repository.updateToken(refreshToken: tJWTRequest.refreshToken))
-          .thenAnswer((_) async => Right(tJWTResponse));
+      when(repository.updateAccessToken(refreshToken: tRefreshToken))
+          .thenAnswer((_) async => Right(tNewAuthEntity));
 
       // Act
-      final result = await useCase(refreshToken: tJWTRequest.refreshToken);
+      final result = await useCase.call(refreshToken: tRefreshToken);
 
       // Assert
-      expect(result, Right(tJWTResponse));
-      verify(repository.updateToken(refreshToken: tJWTRequest.refreshToken))
-          .called(1);
+      expect(result, Right(tNewAuthEntity));
+      verify(repository.updateAccessToken(refreshToken: tRefreshToken));
       verifyNoMoreInteractions(repository);
     });
 
-    test('should return a failure when update is unsuccessful', () async {
+    test('should get a failure when update is unsuccessful', () async {
       // Arrange
-      when(repository.updateToken(refreshToken: tJWTRequest.refreshToken))
-          .thenAnswer((_) async => Left(tInvalidAccessTokenFailure));
+      when(repository.updateAccessToken(refreshToken: tRefreshToken))
+          .thenAnswer((_) async => Left(tFailure));
 
       // Act
-      final result = await useCase(refreshToken: tJWTRequest.refreshToken);
+      final result = await useCase.call(refreshToken: tRefreshToken);
 
       // Assert
-      expect(result, Left(tInvalidAccessTokenFailure));
-      verify(repository.updateToken(refreshToken: tJWTRequest.refreshToken))
-          .called(1);
+      expect(result, Left(tFailure));
+      verify(repository.updateAccessToken(refreshToken: tRefreshToken));
       verifyNoMoreInteractions(repository);
     });
   });

@@ -21,7 +21,7 @@ class AuthProvider extends ChangeNotifier {
   final SignInWithKakaoUseCase signInWithKakaoUseCase;
   final SignOutUseCase signOutUseCase;
   final SignUpUseCase signUpUseCase;
-  final UpdateTokenUseCase updateTokenUseCase;
+  final UpdateAccessTokenUseCase updateTokenUseCase;
 
   AuthProvider({
     required this.sharedPreferences,
