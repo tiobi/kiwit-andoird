@@ -39,6 +39,35 @@ class _FakeHttpResponse_0<T> extends _i1.SmartFake
 class MockRemoteAuthDataSource extends _i1.Mock
     implements _i3.RemoteAuthDataSource {
   @override
+  _i4.Future<_i2.HttpResponse<dynamic>> signIn(
+          {required _i5.AuthModel? body}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #signIn,
+          [],
+          {#body: body},
+        ),
+        returnValue: _i4.Future<_i2.HttpResponse<dynamic>>.value(
+            _FakeHttpResponse_0<dynamic>(
+          this,
+          Invocation.method(
+            #signIn,
+            [],
+            {#body: body},
+          ),
+        )),
+        returnValueForMissingStub: _i4.Future<_i2.HttpResponse<dynamic>>.value(
+            _FakeHttpResponse_0<dynamic>(
+          this,
+          Invocation.method(
+            #signIn,
+            [],
+            {#body: body},
+          ),
+        )),
+      ) as _i4.Future<_i2.HttpResponse<dynamic>>);
+
+  @override
   _i4.Future<_i2.HttpResponse<dynamic>> signUp(
           {required _i5.AuthModel? body}) =>
       (super.noSuchMethod(

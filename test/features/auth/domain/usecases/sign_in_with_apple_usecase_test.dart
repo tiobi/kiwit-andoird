@@ -12,7 +12,8 @@ void main() {
     useCase = SignInWithAppleUseCase(repository: repository);
   });
 
-  group('SignInWithAppleUseCase Test', () {
-    test('should get ', () {});
+  group('SignInWithApple test', () {
+    test('should return a JWTEntity when the sign in is successful',
+        () async {});
   });
 }

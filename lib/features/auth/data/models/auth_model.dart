@@ -1,5 +1,6 @@
 import 'package:dart_mappable/dart_mappable.dart';
 import '../../domain/entities/auth_entity.dart';
+import 'jwt_model.dart';
 
 part 'auth_model.mapper.dart';
 

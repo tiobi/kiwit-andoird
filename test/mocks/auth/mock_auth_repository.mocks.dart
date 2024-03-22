@@ -7,6 +7,8 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:kiwit/core/errors/failure.dart' as _i5;
+import 'package:kiwit/features/auth/data/models/auth_model.dart' as _i7;
+import 'package:kiwit/features/auth/data/models/jwt_model.dart' as _i8;
 import 'package:kiwit/features/auth/domain/entities/auth_entity.dart' as _i6;
 import 'package:kiwit/features/auth/domain/repositories/auth_repository.dart'
     as _i3;
@@ -64,30 +66,50 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
       ) as _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>> signIn() =>
+  _i4.Future<
+      _i2.Either<_i5.Failure, _i2.Either<_i7.AuthModel, _i8.JWTModel>>> signIn({
+    required String? token,
+    required String? provider,
+  }) =>
       (super.noSuchMethod(
         Invocation.method(
           #signIn,
           [],
+          {
+            #token: token,
+            #provider: provider,
+          },
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>>.value(
-            _FakeEither_0<_i5.Failure, _i6.AuthEntity>(
+        returnValue: _i4.Future<
+                _i2.Either<_i5.Failure,
+                    _i2.Either<_i7.AuthModel, _i8.JWTModel>>>.value(
+            _FakeEither_0<_i5.Failure, _i2.Either<_i7.AuthModel, _i8.JWTModel>>(
           this,
           Invocation.method(
             #signIn,
             [],
+            {
+              #token: token,
+              #provider: provider,
+            },
           ),
         )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>>.value(
-                _FakeEither_0<_i5.Failure, _i6.AuthEntity>(
+        returnValueForMissingStub: _i4.Future<
+                _i2.Either<_i5.Failure,
+                    _i2.Either<_i7.AuthModel, _i8.JWTModel>>>.value(
+            _FakeEither_0<_i5.Failure, _i2.Either<_i7.AuthModel, _i8.JWTModel>>(
           this,
           Invocation.method(
             #signIn,
             [],
+            {
+              #token: token,
+              #provider: provider,
+            },
           ),
         )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>>);
+      ) as _i4.Future<
+          _i2.Either<_i5.Failure, _i2.Either<_i7.AuthModel, _i8.JWTModel>>>);
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, _i2.Unit>> signOut(
@@ -228,28 +250,32 @@ class MockAuthRepository extends _i1.Mock implements _i3.AuthRepository {
       ) as _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>> updateToken() =>
+  _i4.Future<_i2.Either<_i5.Failure, _i8.JWTModel>> updateToken(
+          {required String? refreshToken}) =>
       (super.noSuchMethod(
         Invocation.method(
           #updateToken,
           [],
+          {#refreshToken: refreshToken},
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>>.value(
-            _FakeEither_0<_i5.Failure, _i6.AuthEntity>(
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i8.JWTModel>>.value(
+            _FakeEither_0<_i5.Failure, _i8.JWTModel>(
           this,
           Invocation.method(
             #updateToken,
             [],
+            {#refreshToken: refreshToken},
           ),
         )),
         returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>>.value(
-                _FakeEither_0<_i5.Failure, _i6.AuthEntity>(
+            _i4.Future<_i2.Either<_i5.Failure, _i8.JWTModel>>.value(
+                _FakeEither_0<_i5.Failure, _i8.JWTModel>(
           this,
           Invocation.method(
             #updateToken,
             [],
+            {#refreshToken: refreshToken},
           ),
         )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, _i6.AuthEntity>>);
+      ) as _i4.Future<_i2.Either<_i5.Failure, _i8.JWTModel>>);
 }
