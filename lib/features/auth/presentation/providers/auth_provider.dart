@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:kiwit/features/auth/domain/usecases/delete_account_usecase.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../domain/entities/auth_entity.dart';
 import '../../domain/usecases/sign_in_usecase.dart';
 import '../../domain/usecases/sign_in_with_apple_usecase.dart';
 import '../../domain/usecases/sign_in_with_google_usecase.dart';
 import '../../domain/usecases/sign_in_with_kakao_usecase.dart';
 import '../../domain/usecases/sign_out_usecase.dart';
 import '../../domain/usecases/sign_up_usecase.dart';
-import '../../domain/usecases/update_token_usecase.dart';
+import '../../domain/usecases/update_access_token_usecase.dart';
 
 enum AuthStateEnum { authenticated, unauthenticated }
 
@@ -35,12 +36,16 @@ class AuthProvider extends ChangeNotifier {
     required this.updateTokenUseCase,
   });
 
+  AuthEntity? _authEntity;
+  AuthEntity? get authEntity => _authEntity;
+
   AuthStateEnum _authState = AuthStateEnum.unauthenticated;
   AuthStateEnum get authState => _authState;
 
   Future<AuthStateEnum> getAuthState() async {
     final isAuthenticated =
         sharedPreferences.getBool('isAuthenticated') ?? false;
+
     return isAuthenticated
         ? AuthStateEnum.authenticated
         : AuthStateEnum.unauthenticated;
