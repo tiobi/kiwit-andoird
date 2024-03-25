@@ -9,6 +9,6 @@ class SignOutUseCase {
   SignOutUseCase({required this.repository});
 
   Future<Either<Failure, Unit>> call({required String accessToken}) async {
-    return repository.signOut(accessToken: accessToken);
+    return await repository.signOut(accessToken: accessToken);
   }
 }

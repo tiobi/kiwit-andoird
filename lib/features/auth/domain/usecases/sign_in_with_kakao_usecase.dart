@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:kiwit/features/auth/data/models/jwt_model.dart';
 import 'package:kiwit/features/auth/domain/repositories/auth_repository.dart';
 
 import '../../../../core/errors/failure.dart';
@@ -10,7 +9,7 @@ class SignInWithKakaoUseCase {
 
   SignInWithKakaoUseCase({required this.repository});
 
-  Future<Either<Failure, Either<AuthEntity, JWTModel>>> call() async {
-    throw UnimplementedError();
+  Future<Either<Failure, AuthEntity>> call() async {
+    return await repository.signInWithKakao();
   }
 }

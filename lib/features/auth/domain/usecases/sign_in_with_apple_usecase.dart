@@ -1,4 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:kiwit/features/auth/domain/repositories/auth_repository.dart';
+
+import '../../../../core/errors/failure.dart';
+import '../entities/auth_entity.dart';
 
 class SignInWithAppleUseCase {
   final AuthRepository repository;
@@ -10,7 +14,7 @@ class SignInWithAppleUseCase {
   /// Navigate to the registration page.
   ///
 
-  Future<void> call() async {
-    throw UnimplementedError();
+  Future<Either<Failure, AuthEntity>> call() async {
+    return repository.signInWithApple();
   }
 }

@@ -1,3 +1,7 @@
+import 'package:dartz/dartz.dart';
+import 'package:kiwit/features/auth/domain/entities/auth_entity.dart';
+
+import '../../../../core/errors/failure.dart';
 import '../repositories/auth_repository.dart';
 
 class SignUpUseCase {
@@ -5,7 +9,7 @@ class SignUpUseCase {
 
   SignUpUseCase({required this.repository});
 
-  Future<void> call() async {
-    await repository.signUp();
+  Future<Either<Failure, AuthEntity>> call() async {
+    return await repository.signUp();
   }
 }
