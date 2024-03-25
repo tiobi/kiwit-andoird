@@ -5,7 +5,7 @@ import 'package:kiwit/features/auth/domain/usecases/sign_in_with_google_usecase.
 import 'package:kiwit/features/auth/domain/usecases/sign_in_with_kakao_usecase.dart';
 import 'package:kiwit/features/auth/domain/usecases/sign_out_usecase.dart';
 import 'package:kiwit/features/auth/domain/usecases/sign_up_usecase.dart';
-import 'package:kiwit/features/auth/domain/usecases/update_token_usecase.dart';
+import 'package:kiwit/features/auth/domain/usecases/update_access_token_usecase.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

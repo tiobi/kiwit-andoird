@@ -18,7 +18,7 @@ import 'features/auth/domain/usecases/sign_in_with_apple_usecase.dart';
 import 'features/auth/domain/usecases/sign_in_with_google_usecase.dart';
 import 'features/auth/domain/usecases/sign_in_with_kakao_usecase.dart';
 import 'features/auth/domain/usecases/sign_out_usecase.dart';
-import 'features/auth/domain/usecases/update_token_usecase.dart';
+import 'features/auth/domain/usecases/update_access_token_usecase.dart';
 import 'features/auth/presentation/providers/auth_provider.dart';
 
 final getIt = GetIt.instance;

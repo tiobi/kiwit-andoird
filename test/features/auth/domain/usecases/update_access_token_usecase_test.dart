@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kiwit/core/errors/auth_failure.dart';
 import 'package:kiwit/core/errors/failure.dart';
 import 'package:kiwit/features/auth/domain/entities/auth_entity.dart';
-import 'package:kiwit/features/auth/domain/usecases/update_token_usecase.dart';
+import 'package:kiwit/features/auth/domain/usecases/update_access_token_usecase.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../../mocks/auth/mock_auth_repository.mocks.dart';
